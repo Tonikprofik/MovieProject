@@ -1,21 +1,34 @@
-
-/* defaults  */
-html {
-    box-sizing: border-box;
-    font-size: 62.5%;
-}
-body{
-    margin: 0;
-    padding: 0;
-    font-family: 'roboto mono', monospace;
-    
-}
-
-h1{
-    
-}
-.container {
-
-    
-}
-
+.movieTable__row {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  
+  .movieTable__row > div {
+      border: 1px solid black;
+      text-align: center;
+  }
+  
+  .movieTable__Title {
+    width: 20%;
+  }
+  
+  .movieTable__Year {
+    width: 5%;
+  }
+  
+  .movieTable__imdbID {
+    width: 10%;
+  }
+  
+  .movieTable__Type {
+    width: 10%;
+  }
+  
+  .movieTable__Age {
+    width: 5%;
+  }
+  
+  .movieTable__Poster {
+    width: 50%;
+  }
