@@ -1,34 +1,67 @@
+body{
+  font-family: 'roboto', monospace;
+  background-color: darkgoldenrod;
+}
+
 .movieTable__row {
     display: flex;
     align-items: flex-start;
-    flex-wrap: nowrap;
+    flex-flow: row wrap;
+    height: 100%;
+    padding: 5px;
+    margin: 5px;
   }
-  
+  .movieTable__row--first{
+    font-size: larger;
+
+  }
+
+.movieTable__Poster:hover{
+     border: 0;
+     cursor: pointer;
+
+}
+
   .movieTable__row > div {
       border: 1px solid black;
       text-align: center;
+      transition: 0.2s;
+
   }
-  
+
+
   .movieTable__Title {
     width: 20%;
+    padding: 5px;
+    margin: 5px;
   }
   
   .movieTable__Year {
     width: 5%;
+    padding: 5px;
+    margin: 5px;
+    
   }
   
   .movieTable__imdbID {
     width: 10%;
+    display: none;
   }
   
   .movieTable__Type {
     width: 10%;
+    display: none;
   }
   
   .movieTable__Age {
     width: 5%;
+    padding: 5px;
+    margin: 5px;
   }
   
   .movieTable__Poster {
     width: 50%;
+    padding: 5px;
+    margin: 5px;
+    
   }

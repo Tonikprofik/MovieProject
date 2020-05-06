@@ -1,14 +1,14 @@
-const apiUrl = 'https://www.omdbapi.com/?s=Star+Wars&apikey=7d453a07';  // bacha, musi tady byt https!!!
-const maxMovieCount = 5;    // vracenych pocet filmu
-const htmlMovieTable = document.getElementById('movieTable');   // nase zatim prazdna tabulka
+const apiUrl = 'https://www.omdbapi.com/?s=Star+Wars&apikey=7d453a07';  // has to be https
+const maxMovieCount = 8;    // returns number of films
+const htmlMovieTable = document.getElementById('movieTable');   // initial empty movie table
 
 function getMovieData(url) {
     return fetch(url)
         .then(response => response.json())
         .then(data => data.Search)
         .then(data => {
-          if (data.length > maxMovieCount) {      // pokud se tam najde vice filmu
-              data.splice(maxMovieCount, data.length);      // smazat prebyvajici filmy
+          if (data.length > maxMovieCount) {      // if there are more movies
+              data.splice(maxMovieCount, data.length);      // splice out the other movies
           }
       
           return data;
@@ -17,16 +17,17 @@ function getMovieData(url) {
 
 getMovieData(apiUrl)
     .then(movieData => {
-        const currentYear = new Date().getFullYear();   // tento rok
+        const currentYear = new Date().getFullYear();   // this year
 
-        movieData.forEach(movie => {  // pridani klice Age a vypocet prislusne hodnoty stari filmu ke kazdemu filmu
+        movieData.forEach(movie => {  // add key Age and calculate age of each film
           movie.Age = (currentYear - parseInt(movie.Year)).toString();
         })
 
-        // console.log(movieData);  // Vysledek je pole objektu, kde kazdy objekt je jeden film s klicema: Age, Title, Poster, Type, Year, imdbID
+        // console.log(movieData);  
+        // array object where every object is a movie with keys: Age, Title, Poster, Type, Year, imdbID
     
 
-        // Vytvorime prvni radek tabulky se sloupcema Age, Title, Poster, Type, Year, imdbID
+        // create first row of a table with columns Age, Title, Poster, Type, Year, imdbID
         let firstRow = document.createElement('div');
         firstRow.classList.add('movieTable__row');
         firstRow.classList.add('movieTable__row--first');
@@ -43,7 +44,7 @@ getMovieData(apiUrl)
   
   
   
-        // Vytvorime zbytek radku pro vsechny filmy
+        // the rest of rows for other movies
         for (var i = 0; i < movieData.length; i++) {
             let movieCellData = movieData[i];
             let movieRow = document.createElement('div');
